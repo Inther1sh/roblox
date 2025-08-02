@@ -10,13 +10,13 @@
       background-color: #1c1c1c;
       color: white;
       display: flex;
+      min-height: 100vh;
     }
 
     /* Боковое меню */
     .sidebar {
       width: 200px;
       background-color: #111;
-      height: 100vh;
       padding: 20px 10px;
       box-sizing: border-box;
     }
@@ -27,8 +27,7 @@
     }
 
     .nav-item {
-      display: flex;
-      align-items: center;
+      display: block;
       padding: 10px 5px;
       color: #ccc;
       text-decoration: none;
@@ -46,13 +45,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 40px 20px;
     }
 
     .login-box {
       background-color: #2b2b2b;
       padding: 30px;
       border-radius: 10px;
-      width: 320px;
+      width: 100%;
+      max-width: 360px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       text-align: center;
     }
@@ -69,6 +70,10 @@
       border-radius: 6px;
       background-color: #3a3a3a;
       color: white;
+    }
+
+    input::placeholder {
+      color: #ccc;
     }
 
     input:focus {
@@ -103,7 +108,7 @@
 
     a {
       color: #aaa;
-      font-size: 12px;
+      font-size: 13px;
       display: block;
       margin-top: 10px;
       text-decoration: none;
@@ -115,11 +120,32 @@
     }
 
     .footer {
-      position: absolute;
-      bottom: 10px;
-      left: 220px;
+      position: fixed;
+      bottom: 5px;
+      left: 210px;
       font-size: 12px;
       color: #666;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .main {
+        padding: 20px 10px;
+      }
+      .footer {
+        left: 0;
+        text-align: center;
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -128,8 +154,8 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Roblox_Logo_2022.svg" alt="Roblox">
     <a class="nav-item" href="#">🏠 Home</a>
     <a class="nav-item" href="#">👤 Profile</a>
-    <a class="nav-item" href="#">📨 Messages</a>
-    <a class="nav-item" href="#">🤝 Connect</a>
+    <a class="nav-item" href="#">✉️ Messages</a>
+    <a class="nav-item" href="#">🔗 Connect</a>
     <a class="nav-item" href="#">🧍 Avatar</a>
     <a class="nav-item" href="#">🎒 Inventory</a>
     <a class="nav-item" href="#">🔁 Trade</a>
@@ -137,7 +163,7 @@
     <a class="nav-item" href="#">📝 Blog</a>
     <a class="nav-item" href="#">🛍️ Official Store</a>
     <a class="nav-item" href="#">🎁 Gift Cards</a>
-    <a class="nav-item" href="#"><strong>✨ Get Premium</strong></a>
+    <a class="nav-item" href="#"><strong>💎 Get Premium</strong></a>
   </div>
 
   <div class="main">
