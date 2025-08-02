@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Roblox - Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e3e3e3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .login-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      width: 320px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: fadeIn 1.2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border 0.3s ease;
+    }
+    input:focus {
+      border-color: #ff2c1d;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff2c1d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #e02415;
+    }
+    .links {
+      text-align: center;
+      margin-top: 12px;
+    }
+    .links a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .logo img {
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Roblox_Logo_2022.svg" alt="Roblox Logo">
+    </div>
+    <h2>Log In</h2>
+    <input id="username" type="text" placeholder="Username or Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="handleLogin()">Log In</button>
+    <div class="links">
+      <p><a href="#">Forgot Password or Username?</a></p>
+      <p><a href="#">Sign Up</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Загружаем имя пользователя из localStorage при старте
+    window.onload = () => {
+      const savedUser = localStorage.getItem('savedUsername');
+      if (savedUser) {
+        document.getElementById('username').value = savedUser;
+      }
+    };
+
+    // Сохраняем имя пользователя при логине
+    function handleLogin() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (!username || !password) {
+        alert("Введите логин и пароль.");
+        return;
+      }
+
+      localStorage.setItem('savedUsername', username);
+      alert("🔐 Добро пожаловать, " + username + "!");
+      
+      // Тут может быть переход на другую страницу или сохранение сессии
+    }
+  </script>
+</body>
+</html>
