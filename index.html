@@ -2,117 +2,159 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Roblox - Login</title>
+  <title>Roblox – Add Account</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #e3e3e3;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1c1c1c;
+      color: white;
+      display: flex;
+    }
+
+    /* Боковое меню */
+    .sidebar {
+      width: 200px;
+      background-color: #111;
+      height: 100vh;
+      padding: 20px 10px;
+      box-sizing: border-box;
+    }
+
+    .sidebar img {
+      height: 40px;
+      margin-bottom: 20px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 5px;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .nav-item:hover {
+      background-color: #222;
+      border-radius: 6px;
+      color: white;
+    }
+
+    .main {
+      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      overflow: hidden;
     }
+
     .login-box {
-      background-color: white;
+      background-color: #2b2b2b;
       padding: 30px;
-      border-radius: 12px;
+      border-radius: 10px;
       width: 320px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      animation: fadeIn 1.2s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    h2 {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
     }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+    }
+
     input {
       width: 100%;
       padding: 10px;
       margin-bottom: 12px;
-      border: 1px solid #ccc;
+      border: none;
       border-radius: 6px;
-      transition: border 0.3s ease;
+      background-color: #3a3a3a;
+      color: white;
     }
+
     input:focus {
-      border-color: #ff2c1d;
       outline: none;
+      border: 1px solid #ff2c1d;
     }
+
     button {
       width: 100%;
       padding: 10px;
       background-color: #ff2c1d;
-      color: white;
       border: none;
       border-radius: 6px;
+      color: white;
       font-weight: bold;
+      margin-top: 10px;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
+
     button:hover {
       background-color: #e02415;
     }
-    .links {
-      text-align: center;
-      margin-top: 12px;
+
+    .option-button {
+      background-color: #444;
+      margin-top: 10px;
     }
-    .links a {
-      color: #007bff;
+
+    .option-button:hover {
+      background-color: #555;
+    }
+
+    a {
+      color: #aaa;
+      font-size: 12px;
+      display: block;
+      margin-top: 10px;
       text-decoration: none;
-      font-size: 13px;
     }
-    .logo {
-      text-align: center;
-      margin-bottom: 10px;
+
+    a:hover {
+      text-decoration: underline;
+      color: #ddd;
     }
-    .logo img {
-      height: 40px;
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      left: 220px;
+      font-size: 12px;
+      color: #666;
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
-    <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Roblox_Logo_2022.svg" alt="Roblox Logo">
-    </div>
-    <h2>Log In</h2>
-    <input id="username" type="text" placeholder="Username or Email">
-    <input id="password" type="password" placeholder="Password">
-    <button onclick="handleLogin()">Log In</button>
-    <div class="links">
-      <p><a href="#">Forgot Password or Username?</a></p>
-      <p><a href="#">Sign Up</a></p>
+  <div class="sidebar">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Roblox_Logo_2022.svg" alt="Roblox">
+    <a class="nav-item" href="#">🏠 Home</a>
+    <a class="nav-item" href="#">👤 Profile</a>
+    <a class="nav-item" href="#">📨 Messages</a>
+    <a class="nav-item" href="#">🤝 Connect</a>
+    <a class="nav-item" href="#">🧍 Avatar</a>
+    <a class="nav-item" href="#">🎒 Inventory</a>
+    <a class="nav-item" href="#">🔁 Trade</a>
+    <a class="nav-item" href="#">👥 Communities</a>
+    <a class="nav-item" href="#">📝 Blog</a>
+    <a class="nav-item" href="#">🛍️ Official Store</a>
+    <a class="nav-item" href="#">🎁 Gift Cards</a>
+    <a class="nav-item" href="#"><strong>✨ Get Premium</strong></a>
+  </div>
+
+  <div class="main">
+    <div class="login-box">
+      <h2>Add Account</h2>
+      <input type="text" placeholder="Username/Email/Phone">
+      <input type="password" placeholder="Password">
+      <button>Log In</button>
+      <a href="#">Forgot Password or Username?</a>
+      <button class="option-button">Email Me a One-Time Code</button>
+      <button class="option-button">Use Another Device</button>
+      <a href="#"><strong>Create A New Account</strong></a>
     </div>
   </div>
 
-  <script>
-    // Загружаем имя пользователя из localStorage при старте
-    window.onload = () => {
-      const savedUser = localStorage.getItem('savedUsername');
-      if (savedUser) {
-        document.getElementById('username').value = savedUser;
-      }
-    };
-
-    // Сохраняем имя пользователя при логине
-    function handleLogin() {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-
-      if (!username || !password) {
-        alert("Введите логин и пароль.");
-        return;
-      }
-
-      localStorage.setItem('savedUsername', username);
-      alert("🔐 Добро пожаловать, " + username + "!");
-      
-      // Тут может быть переход на другую страницу или сохранение сессии
-    }
-  </script>
+  <div class="footer">
+    ©2025 Roblox Corporation · Terms · Privacy · Help
+  </div>
 </body>
 </html>
